@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <h2>{{ task.title }}</h2>
+                <p>{{ task.description }}</p>
+                <p><em>Published on {{ task.created_at }}</em></p>
+                <a href="{% url 'task-update' task.id %}">Edit</a> |
+                <a href="{% url 'task-delete' task.id %}">Delete</a>
+            </li>
+        {% empty %}
+            <li>No tasks available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
